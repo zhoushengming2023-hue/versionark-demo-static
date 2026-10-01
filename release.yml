@@ -1,0 +1,14 @@
+version: 1
+build:
+  steps:
+    - type: run
+      name: check-index
+      command: [python3, -c, "import pathlib; assert pathlib.Path('index.html').is_file()"]
+artifact:
+  kind: static-files
+  deployment:
+    target_type: static-files
+    entrypoint: index.html
+  include:
+    - index.html
+    - VERSION
